@@ -2,12 +2,18 @@
 module.exports = function(sequelize, DataTypes) {
   var Todo = sequelize.define('Todo', {
     title: DataTypes.STRING,
-    isComplete: DataTypes.STRING
-  }, {
+    isComplete: DataTypes.BOOLEAN,
+    UserId: {
+      type: DataTypes.INTEGER,
+      references: {
+      model: 'Users',
+      key: 'id',
+      }
+    }
+  },{
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
-        Todo.belongTo(models.User)
+        Todo.belongsTo(models.User)
       }
     }
   });

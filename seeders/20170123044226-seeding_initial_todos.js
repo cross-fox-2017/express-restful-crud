@@ -14,14 +14,14 @@ module.exports = {
       }], {});
     */
     return queryInterface.bulkInsert('Todos', [
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
-      {title: faker.random.words(), isComplete: false, userId: 3, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 3, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 2, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 4, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 1, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 1, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 2, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 2, createdAt: new Date(), updatedAt: new Date()},
+      {title: faker.random.words(), isComplete: false, UserId: 3, createdAt: new Date(), updatedAt: new Date()},
     ], {})
   },
 

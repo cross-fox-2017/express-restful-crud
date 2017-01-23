@@ -1,9 +1,56 @@
 var express = require('express');
 var router = express.Router();
+var model = require('../models');
+var user = model.User;
+var todo = model.Todo;
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+  todo.findById(3).then(function(result){
+    console.log(result.getUser());
+  })
+  res.render('index', { title: 'Express Todos' });
 });
 
+router.post('/add', function(req, res, next) {
+  if(req.body.add == ""){
+    res.redirect('/list')
+  }
+  let title = req.body.title
+  let userId = req.body.userId
+  let complete = req.body.complete
+  if (!complete){
+    complete= false
+  }
+  todo.create({title: title, isComplete: complete}).then(function(val){
+    res.redirect('/list')
+  })
+});
+router.get('/list', function(req, res, next){
+  todo.findAll({raw: true, order: [['id', 'ASC']]}).then(function(result){
+    res.render('list', {result: result, title: "TODO"})
+  })
+});
+router.post('/update', function(req,res,next){
+  let action = req.body.action.split(" ")
+  if(action[0] == 'update'){
+    todo.findById(action[1]).then(function(data){
+      res.render('update', { data: data, title: "TODOs"})
+    })
+  } else {
+    todo.destroy({where: {id: action[1]}}).then(function(data) {
+      res.redirect('/list')
+    })
+  }
+})
+
+router.post('/updated', function(req, res, next) {
+  todo.findById(req.body.id).then(function(val) {
+    val.update({
+      title: req.body.title
+    }).then(function(val) {
+      res.redirect('/list')
+    })
+  })
+})
 module.exports = router;
