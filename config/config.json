@@ -1,0 +1,10 @@
+{
+  "development": {
+    "username": "hacktiv8-7",
+    "password": "",
+    "host": "127.0.0.1",
+    "dialect": "postgres",
+    "database": "express_restful_crud",
+    "logging": false
+  }
+}
