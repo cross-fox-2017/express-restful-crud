@@ -13,9 +13,10 @@ router.post('/update', function(req, res, next) {
   models.Todo.findById(req.body.id).then(function (find) {
     find.update({
       title: req.body.title
+    }).then(function(){
+      res.redirect('/')
     })
   })
-  res.redirect('/')
 });
 
 router.get('/edit/:id', function(req, res, next) {
