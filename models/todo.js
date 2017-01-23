@@ -5,10 +5,10 @@ module.exports = function(sequelize, DataTypes) {
     isComplete: DataTypes.BOOLEAN,
     UserId: {
       type: DataTypes.INTEGER,
-      references: {
-      model: 'Users',
-      key: 'id',
-      }
+      // references: {
+      // model: 'Users',
+      // key: 'id',
+      // }
     }
   },{
     classMethods: {

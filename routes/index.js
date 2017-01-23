@@ -7,7 +7,9 @@ var todo = model.Todo;
 /* GET home page. */
 router.get('/', function(req, res, next) {
   todo.findById(3).then(function(result){
-    console.log(result.getUser());
+    result.getUser().then(function(val){
+      console.log(val);
+    });
   })
   res.render('index', { title: 'Express Todos' });
 });
@@ -22,14 +24,18 @@ router.post('/add', function(req, res, next) {
   if (!complete){
     complete= false
   }
-  todo.create({title: title, isComplete: complete}).then(function(val){
+  todo.create({title: title, UserId: userId, isComplete: complete}).then(function(val){
     res.redirect('/list')
   })
 });
 router.get('/list', function(req, res, next){
-  todo.findAll({raw: true, order: [['id', 'ASC']]}).then(function(result){
+  // todo.findAll({raw: true, order: [['id', 'ASC']], include: [user]}).then(function(result){
+  //   res.render('list', {result: result, title: "TODO"})
+  // })
+  todo.findAll({order: [['id', 'ASC']], include: [user]}).then(function(result){
     res.render('list', {result: result, title: "TODO"})
   })
+
 });
 router.post('/update', function(req,res,next){
   let action = req.body.action.split(" ")

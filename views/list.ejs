@@ -14,7 +14,7 @@
         <td><%= val.title %></td>
         <td><%= val.createdAt.toUTCString() %></td>
         <td><%= val.isComplete %></td>
-        <td><%= val.getUser %></td>
+        <td><%= val.User.email %></td>
         <td>
           <form class="" action="/update" method="post">
             <button type="submit" name="action" value="update <%= val.id %>">Update</button>
