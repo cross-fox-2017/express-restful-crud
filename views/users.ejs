@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>RestFull CRUD</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+
+    <div class="container" align="center">
+      <br><br><br>
+      <h1>Express Restful CRUD</h1>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+
+
+                  <select class="form-control" id="sel1" name="email">
+                    <%for(var i=0; i<getuser.length; i++){%>
+                      <%var dataid=getuser[i].id%>
+                      <option><%=getuser[i].email%></option>
+                    <%}%>
+                  </select>
+                <form action="/users/<%=dataid%>" method="post" class="form-group">
+                    <input class="form-control" type="text" name="title" placeholder="title" value=""></input>
+                    <select class="form-control" id="sel1" name="is_complete">
+                        <option>false</option>
+                        <option>true</option>
+                    </select>
+                    <input type="submit" name="submit" value="SUBMIT">
+                </form>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+
+
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>Email</th>
+                    <th>Title</th>
+                    <th>is_complete</th>
+                    <th>createdAt</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+              <%for(var i=0; i<gettodo.length; i++){%>
+                <tr>
+                    <%var id = gettodo[i].id%>
+                    <th scope="row"><%=i+1%></th>
+                    <td><%=gettodo[i].User.email%></td>
+                    <td><%=gettodo[i].title%></td>
+                    <td><%=gettodo[i].is_complete%></td>
+                    <td><%=gettodo[i].createdAt%></td>
+                    <td><a href="/update/<%=id%>" class="btn btn-primary">Edit</a> <a href="/delete/<%=id%>" class="btn btn-info">Hapus</a></td>
+              </tr>
+            <%}%>
+            </tbody>
+        </table>
+    </div>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+</body>
+
+</html>
