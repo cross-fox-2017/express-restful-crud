@@ -4,7 +4,7 @@ let models = require('../models')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  models.Todo.findAll({raw:true}).then(function (find) {
+  models.Todo.findAll({include: models.User}).then(function (find) {
     res.render('index', {title: 'CRUD Memo', memo: find});
   })
 });
@@ -14,8 +14,8 @@ router.post('/update', function(req, res, next) {
     find.update({
       title: req.body.title
     })
-    res.redirect('/')
   })
+  res.redirect('/')
 });
 
 router.get('/edit/:id', function(req, res, next) {

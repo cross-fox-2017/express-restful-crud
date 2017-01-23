@@ -10,10 +10,8 @@ function show () {
   //   })
   // })
   db.User.findAll().then(function (find) {
-    find.forEach(function (data) {
-      data.getTodos().then(function (found) {
-        console.log(found);
-      })
+    db.Todo.findAll({include: db.User}).then(function (find) {
+      console.log(find[0].User.email);
     })
   })
 }
