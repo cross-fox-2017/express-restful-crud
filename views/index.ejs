@@ -70,7 +70,7 @@
             <td><%= todosdata[i].id %></td>
             <td><%= todosdata[i].title %></td>
             <td><%= todosdata[i].is_complete %></td>
-            <td><%= todosdata[i].UserId %></td>
+            <td><%= todosdata[i].User.email %></td>
             <td><%= todosdata[i].createdAt %></td>
             <td><a href="/edit/<%= todosdata[i].id %>" class="btn btn-info">Update</a>&nbsp|&nbsp
               <a href="/delete/<%= todosdata[i].id %>"
@@ -87,8 +87,12 @@
         <input type="text" name="title" placeholder="title"><br>
       </div>
       <div class="form-group">
-        UserId:<br>
-        <input type="text" name="UserId" placeholder="UserId"><br>
+        Email:<br>
+        <select class="" name="UserId">
+          <% for (var i=0;i < users.length; i++) {%>
+          <option value="<%= users[i].id %>"><%= users[i].email %></option>
+          <% } %>
+        </select>
       </div>
       <div class="form-group">
         IsComplete:<br>
