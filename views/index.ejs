@@ -44,9 +44,20 @@
                       <input type="text" class="form-control" name="title" placeholder="Title">
                     </div>
                   </div>
+
                   <div class="col-sm-3">
                     <div class="form-group">
-                      <input type="text" class="form-control" name="complete" placeholder="Complete">
+                      <input type="text" class="form-control" name="complete" placeholder="Complete Status">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="dropdown">
+                      <select type="text" class="btn btn-primary dropdown-toggle" name="UserId" placeholder="Email">
+                        <% for (var i=0;i < users.length; i++) {%>
+                          <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                        <% } %>
+                      </select>
                     </div>
                   </div>
 

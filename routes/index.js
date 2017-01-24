@@ -14,9 +14,31 @@ router.get('/', function (request, response) {
 })
 
 //POST
-router.post('/',function(req,res){
-  user.create({title:req.body.title,created:req.body.created,phone:req.body.phone}).then(function(tes){
-    res.redirect('/')
+router.post('/', function (req, res, next) {
+  todo.create({
+    title: req.body.title,
+    is_complete: req.body.complete,
+    UserId: req.body.UserId
+  }).then(function(data){
+      res.redirect('/')
+  })
+
+})
+
+// PUT
+router.post('/updated', function (req, res, next) {
+  todo.findById(req.body.id).then(function (todos) {
+    todos.update({
+      title: req.body.title
+    }).then(function () {
+      res.redirect('/')
+    })
+  })
+})
+
+router.get('/update/:id', function(req, res, next) {
+  todo.findById(req.params.id).then(function (todos) {
+    res.render("update", {todo: todos})
   })
 });
 
