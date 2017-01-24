@@ -19,7 +19,7 @@ router.post('/add', function(req, res, next) {
     res.redirect('/list')
   }
   let title = req.body.title
-  let userId = req.body.userId
+  let userId = req.body.UserId
   let complete = req.body.complete
   if (!complete){
     complete= false
@@ -29,11 +29,10 @@ router.post('/add', function(req, res, next) {
   })
 });
 router.get('/list', function(req, res, next){
-  // todo.findAll({raw: true, order: [['id', 'ASC']], include: [user]}).then(function(result){
-  //   res.render('list', {result: result, title: "TODO"})
-  // })
   todo.findAll({order: [['id', 'ASC']], include: [user]}).then(function(result){
-    res.render('list', {result: result, title: "TODO"})
+    user.findAll({raw: true}).then(function(dataUser){
+      res.render('list', {result: result, title: "TODO", data: dataUser})
+    })
   })
 
 });

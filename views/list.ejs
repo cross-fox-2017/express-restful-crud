@@ -28,8 +28,11 @@
     <form class="" action="/add" method="post">
       <label for="">Title</label>
       <input type="text" name="title" value="">
-      <label for="">User Id</label>
-      <input type="text" name="userId" value="1">
+      <select class="" name="UserId">
+        <% data.forEach(function(data){ %>
+        <option value=<%= data.id %>><%= data.email %></option>
+        <% }) %>
+      </select>
       <label for="">Is Complete</label>
       <input type="checkbox" name="complete" value="true">
       <input type="submit" value="Submit">
