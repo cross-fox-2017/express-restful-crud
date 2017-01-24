@@ -1,0 +1,23 @@
+<% include ../partials/header %>
+
+<h1><%=title%></h1>
+<table style="width:100%" border="1">
+  <tr>
+    <th>title</th>
+    <th>is_complete</th>
+    <th>user_email</th>
+    <th>createdAt</th>
+    <th>Action</th>
+  </tr>
+  <% for(var i=0;i<tododata.length;i++){%>
+  <tr>
+    <td><%=tododata[i].title%></td>
+    <td><%=tododata[i].is_complete%></td>
+    <td><%=tododata[i].User.email %></td>
+    <td><%=tododata[i].createdAt %></td>
+    <td><a href="update/<%=tododata[i].id%>"> Update </a>||<a href="/delete/<%=tododata[i].id%>"> Delete </a></td>
+  </tr>
+  <% }%>
+</table>
+<% include form%>
+<% include ../partials/footer %>
