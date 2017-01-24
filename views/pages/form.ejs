@@ -1,0 +1,12 @@
+<form action="/" method="post">
+<br>
+  <label>title</label>
+  <input type="text" name="title">
+  <label>user_email</label>
+  <select class="" name="UserId">
+    <% for(var i=0;i<users.length;i++){%>
+    <option value="<%=users[i].id%>"><%=users[i].email%></option>
+    <% } %>
+  </select>
+  <input type="submit" value="Submit">
+</form>
