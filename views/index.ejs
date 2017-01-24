@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <h1><%= title %></h1>
+    <table border="1">
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Complete</th>
+        <th>User ID</th>
+        <th>Email</th>
+        <th>Created At</th>
+        <th>Action</th>
+      </tr>
+      <% for(let i = 0; i < memo.length; i++){ %>
+      <tr>
+        <td><%= memo[i].id %></td>
+        <td><%= memo[i].title %></td>
+        <td><%= memo[i].is_complete %></td>
+        <td><%= memo[i].UserId %></td>
+        <td><%= memo[i].User.email %></td>
+        <td><%= helper.formatDate(memo[i].createdAt) %></td>
+        <td><a href="/edit/<%= memo[i].id %>">Update</a>&nbsp|&nbsp<a href="/delete/<%= memo[i].id %>" onclick="popup(<%= memo[i].id %>)">Delete</a></td>
+      </tr>
+      <% } %>
+    </table>
+    <hr>
+    <h2>Add Memo</h2>
+    <form action="/add" method="post">
+      <input type="text" name="title" value="" placeholder="Add Memo">
+      <input type="text" name="complete" value="" placeholder="1 / 0">
+      <select name="UserId">
+        <% for(let i = 0; i < users.length; i++){ %>
+        <option value="<%= users[i].id %>"><%= users[i].email %></option>
+        <% } %>
+      </select>
+      <input type="submit" value="Add Memo">
+    </form>
+
+    <script>
+      function popup(id){
+        return confirm(`Do you want to delete id ${id}?`)
+      }
+    </script>
+  </body>
+</html>
