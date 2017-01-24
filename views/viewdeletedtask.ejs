@@ -1,0 +1,26 @@
+<% include includer/header %>
+<div class="container">
+<h1> Deleted List <a href="/users/" type="button" class="btn btn-primary">home</a></h1>
+    <table class="table table-hover" style="width:100%" border="1px solid">
+      <tr>
+        <th>id</th>
+        <th>Check List</th>
+        <th>Task</th>
+
+
+      </tr>
+      <% data.forEach(function(item){ %>
+      <tr>
+        <td> <%= item.id %> </td>
+        <% if(item.is_completed){ %>
+        <td><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></td>
+        <% } else{ %>
+        <td><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></td>
+        <% } %>
+        <td> <%= item.task %> </td>
+
+      </tr>
+        <% }) %>
+    </table>
+  </div>
+  <% include includer/footer %>
