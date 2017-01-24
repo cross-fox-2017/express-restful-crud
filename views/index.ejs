@@ -33,7 +33,11 @@
     <form action="/add" method="post">
       <input type="text" name="title" value="" placeholder="Add Memo">
       <input type="text" name="complete" value="" placeholder="1 / 0">
-      <input type="text" name="UserId" value="" placeholder="User ID">
+      <select name="UserId">
+        <% for(let i = 0; i < users.length; i++){ %>
+        <option value="<%= users[i].id %>"><%= users[i].email %></option>
+        <% } %>
+      </select>
       <input type="submit" value="Add Memo">
     </form>
 

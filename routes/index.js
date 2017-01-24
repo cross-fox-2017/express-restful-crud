@@ -5,7 +5,9 @@ let models = require('../models')
 /* GET home page. */
 router.get('/', function(req, res, next) {
   models.Todo.findAll({include: models.User}).then(function (find) {
-    res.render('index', {title: 'CRUD Memo', memo: find});
+    models.User.findAll({raw:true}).then(function (data) {
+      res.render('index', {title: 'CRUD Memo', memo: find, users: data});
+    })
   })
 });
 
