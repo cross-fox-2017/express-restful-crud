@@ -27,4 +27,19 @@ router.post('/update', function (req, res, next) {
   })
 })
 
+router.get('/edit/:id', function(req, res, next) {
+  models.Todo.findById(req.params.id).then(function (todos) {
+    res.render("edit", {todo: todos})
+  })
+});
+
+router.get('/delete/:id', function(req, res, next) {
+  models.Todo.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  res.redirect('/')
+});
+
 module.exports = router;

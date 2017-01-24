@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
     <style>
       table {
           font-family: arial, sans-serif;
@@ -23,7 +24,7 @@
       tr:nth-child(even) {
           background-color: #dddddd;
       }
-  </style>
+    </style>
   </head>
 
   <body>
@@ -52,36 +53,50 @@
 
     <button type="submit" class="btn btn-default">Submit</button> -->
 
-    <table style="width:50%">
-      <tr>
-        <td>id</td>
-        <td>title</td>
-        <td>completed</td>
-        <td>UserId</td>
-        <td>Create At</td>
-        <!-- <td>Action</td> -->
-      </tr>
-
-      <% for (var i=0;i < todosdata.length; i++) {%>
+    <table class="table table-bordered">
+      <thead>
         <tr>
-        <td><%= todosdata[i].id %></td>
-        <td><%= todosdata[i].title %></td>
-        <td><%= todosdata[i].is_complete %></td>
-        <td><%= todosdata[i].UserId %></td>
-        <td><%= todosdata[i].createdAt %></td>
+          <td>ID</td>
+          <td>TITLE</td>
+          <td>COMPLETED</td>
+          <td>USER ID</td>
+          <td>CREATE AT</td>
+          <td>ACTION</td>
         </tr>
-      <% } %>
+      </thead>
+      <tbody>
+        <% for (var i=0;i < todosdata.length; i++) {%>
+          <tr>
+            <td><%= todosdata[i].id %></td>
+            <td><%= todosdata[i].title %></td>
+            <td><%= todosdata[i].is_complete %></td>
+            <td><%= todosdata[i].UserId %></td>
+            <td><%= todosdata[i].createdAt %></td>
+            <td><a href="/edit/<%= todosdata[i].id %>" class="btn btn-info">Update</a>&nbsp|&nbsp
+              <a href="/delete/<%= todosdata[i].id %>"
+                onclick="popup(<%= todosdata[i].id %>)" class="btn btn-danger">Delete</a></td>
+          </tr>
+        <% } %>
+      </tbody>
 
     </table>
 
     <form action="/add" method="post">
-      Title:<br>
-      <input type="text" name="title"><br>
-      UserId:<br>
-      <input type="text" name="UserId"><br>
-      IsComplete:<br>
-      <input type="text" name="isComplete"><br><br>
-      <input type="submit" value="Submit">
+      <div class="form-group">
+        Title:<br>
+        <input type="text" name="title" placeholder="title"><br>
+      </div>
+      <div class="form-group">
+        UserId:<br>
+        <input type="text" name="UserId" placeholder="UserId"><br>
+      </div>
+      <div class="form-group">
+        IsComplete:<br>
+        <input type="text" name="isComplete" placeholder="true or false"><br>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-success">
+
     </form>
 
   </body>
