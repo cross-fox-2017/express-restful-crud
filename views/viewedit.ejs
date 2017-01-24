@@ -1,0 +1,15 @@
+<% include includer/header %>
+
+    <div class="container">
+        <h1>Editing - Users Task</h1>
+        <form class="form-inline" action="/users/doEdit" method="post">
+          <div class="form-group">
+            <label for="task">Task : </label>
+            <input type="text" name="task" class="form-control" value="<%= data.task %>">
+            <input type="hidden" name="todo_id" class="form-control" value="<%= data.id %>">
+          </div>
+          <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+      </div>
+
+  <% include includer/footer %>
