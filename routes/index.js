@@ -11,6 +11,8 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
+
 router.get('/users', function(req, res, next) {
     models.User.findAll().then(function(data) {
       models.Todo.findAll({ include: [ models.User ] }).then(function(dt){
@@ -56,7 +58,6 @@ router.get('/update/:getid', function(req, res, next) {
 
 router.post('/update', function(req, res, next) {
   models.Todo.findById(req.body.id).then(function(data) {
-    // console.log(typeof(data.title));
     data.update({
         title: req.body.title,
         is_complete: req.body.is_complete,

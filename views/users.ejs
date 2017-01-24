@@ -67,7 +67,7 @@
                     <td><%=gettodo[i].User.email%></td>
                     <td><%=gettodo[i].title%></td>
                     <td><%=gettodo[i].is_complete%></td>
-                    <td><%=gettodo[i].createdAt%></td>
+                    <td><%=gettodo[i].createdAt.toString().slice(0,21)%></td>
                     <td><a href="/update/<%=id%>" class="btn btn-primary">Edit</a> <a href="/delete/<%=id%>" class="btn btn-info">Hapus</a></td>
               </tr>
             <%}%>
