@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <title></title>
+  </head>
+  <body>
+
+          <div class="row">
+            <form action="/updated" method="post">
+
+                <input type="hidden" class="form-control" name="title" value="<%= todo.id%>" placeholder="Title">
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="title" value="<%= todo.title%>" placeholder="Title">
+                    </div>
+                  </div>
+
+                  <div class="col-sm-3">
+                    <div class="form-group">
+                      <input type="text" class="form-control" name="complete" value="<%= todo.complete%>" placeholder="Complete Status">
+                    </div>
+                  </div>
+
+                  <!-- <div class="col-sm-3">
+                    <div class="dropdown">
+                      <select type="text" class="btn btn-primary dropdown-toggle" value="<%= todo.id%>d" placeholder="Email">
+                        <% for (var i=0;i < users.length; i++) {%>
+                          <option value="<%= users[i].id %>"><%= users[i].email %></option>
+                        <% } %>
+                      </select>
+                    </div>
+                  </div> -->
+
+                  <div class="col-sm-3">
+                    <button type="submit" value="Submit" class="btn btn-success">Submit</button>
+                  </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+
+  </body>
+</html>
