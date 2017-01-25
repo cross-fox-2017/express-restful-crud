@@ -52,7 +52,8 @@ router.post('/update', function(req,res,next){
 router.post('/updated', function(req, res, next) {
   todo.findById(req.body.id).then(function(val) {
     val.update({
-      title: req.body.title
+      title: req.body.title,
+      isComplete: req.body.complete
     }).then(function(val) {
       res.redirect('/list')
     })
