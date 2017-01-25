@@ -6,19 +6,13 @@
   </head>
   <body>
     <h2>Update data</h2>
-    <form action="/update" method="post">
+    <form action="/doUpdate" method="post">
       ID :<br>
-      <input type="text" name="id" readonly="true" value="<%=todo.id%>"><br>
+      <input type="text" name="data_id" readonly="true" value="<%= data.id %>"><br>
       Title   :<br>
-      <input type="text" name="Title" value="<%=todo.title%>"><br>
+      <input type="text" name="title" value="<%= data.title %>"><br>
       Complete:<br>
-      <input type="text" name="isComplete" value="<%=todo.is_complete%>"><br>
-      Email:<br>
-      <select type="text" name="UserId"><br>
-        <% for (var i=0;i < users.length; i++) {%>
-        <option value="<%= users[i].id %>"><%= users[i].email %></option>
-        <% } %>
-      </select><br><br>
+      <input type="text" name="isComplete" value="<%= data.is_complete %>"><br><br>
       <input type="submit" value="Submit">
     </form>
   </body>

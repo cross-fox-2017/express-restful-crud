@@ -12,18 +12,48 @@ router.get('/', function(req, res, next) {
 });
 
 router.post('/add', function (req, res, next) {
-  models.Todo.create({
-    title: req.body.title,
-    is_complete: req.body.isComplete,
-    UserId: req.body.UserId
-  }).then(function(data){
-    res.redirect('/')
+  models.Todo.create(
+    {
+      title: req.body.title,
+      is_complete: req.body.isComplete,
+      UserId: req.body.UserId
+    }).then(function(data){
+      res.redirect('/')
   })
 });
 
-router.get('/getUpdate/:id', function(req, res, next) {
+router.get('/update/:id', function(req, res, next) {
   models.Todo.findById(req.params.id).then(function (todos) {
-    res.render("update", {todo: todos})
+    res.render("update", {data: todos})
+  })
+});
+
+router.post('/doUpdate', function (req, res, next) {
+  let id = req.body.data_id
+  models.Todo.findById(id).then(function(data){
+    if(data){
+      data.updateAttributes(
+        {
+          title: req.body.title,
+          is_complete: req.body.isComplete
+        }).then(function(){
+            res.redirect('/')
+        })
+      }
+  })
+});
+
+router.get('/delete/:id', function(req, res){
+  let id = req.params.id
+  models.Todo.findById(id).then(function(data){
+    if(data){
+      data.destroy({
+        where:{
+          data:req.body.id
+        }
+      })
+    }
+    res.redirect('/')
   })
 });
 

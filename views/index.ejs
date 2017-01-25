@@ -23,8 +23,8 @@
         <td><%= todoData[i].is_complete %></td>
         <td><%= todoData[i].User.email %></td>
         <td>
-          <a href = "/getUpdate/" value = "<%= todoData[i].id %>">Update<a/>
-          <a href = "/delete/" value = "<%= todoData[i].id %>" onclick="return confirm('Are you sure ??')">Delete<a/>
+          <a href = "/update/<%= todoData[i].id %>">Update<a/>
+          <a href = "/delete/<%= todoData[i].id %>" onclick="return confirm('Are you sure?')">Delete<a/>
         </td>
       </tr>
       <% } %>
@@ -32,7 +32,7 @@
     <form action="/add" method="post">
       <br>
       Title   :<br>
-      <input type="text" name="Title"><br>
+      <input type="text" name="title"><br>
       Complete:<br>
       <input type="text" name="isComplete"><br>
       Email:<br>
