@@ -29,7 +29,7 @@
                 <td><%= todosdata[i].createdAt.toUTCString() %></td>
                 <td><%= todosdata[i].User.email %></td>
                 <td><%= todosdata[i].is_complete %></td>
-                <td><a href="/update/<%=todosdata[i].id%>"> Update </a></td>
+                <td><a href="/edit/<%=todosdata[i].id%>"> Update </a></td>
                 <td><a href="/delete/<%=todosdata[i].id%>"> Delete </a></td>
               </tr>
               <%}%>

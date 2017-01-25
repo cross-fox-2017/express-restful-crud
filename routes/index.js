@@ -26,20 +26,34 @@ router.post('/', function (req, res, next) {
 })
 
 // PUT
-router.post('/updated', function (req, res, next) {
-  todo.findById(req.body.id).then(function (todos) {
-    todos.update({
-      title: req.body.title
-    }).then(function () {
-      res.redirect('/')
-    })
-  })
-})
-
-router.get('/update/:id', function(req, res, next) {
-  todo.findById(req.params.id).then(function (todos) {
-    res.render("update", {todo: todos})
+router.get('/edit/:id', function(req, res) {
+  let id = req.params.id
+  todo.findById(id).then(function (tes) {
+      res.render('edit', {title: "edit memo", update:tes} )
   })
 });
 
+router.post('/updated',function(req,res){
+  let id = req.body.id
+  todo.findById(id).then(function (data){
+    if(data){
+      data.update({title:req.body.title,complete:req.body.complete}).then(function () {
+        // body...
+        res.redirect('/')
+      })
+    }
+  })
+})
+
+//DELETE
+router.get('/delete/:id', function(req, res, next) {
+  let id = req.params.id;
+  todo.destroy({
+    where: {
+      id: id
+    }
+  }).then(function(){
+    res.redirect('/')
+  })
+});
 module.exports = router;
