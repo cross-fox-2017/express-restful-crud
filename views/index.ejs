@@ -41,9 +41,12 @@
           <label for="exampleInputComplete">Complete state</label>
           <input type="text" class="form-control" name="complete" placeholder="value must be 0 / 1"/>
           <label for="exampleInputUserId">User Id</label>
-          <input type="text" class="form-control" name="UserId" placeholder="User Id"/>
-        </div>
-        <button type="submit" class="btn btn-success">Submit</button>
+          <select class="form-control" name="UserId">
+            <% users.forEach(function(val){ %>
+            <option value="<%= val.id %>"><%= val.email %></option>
+            <% }) %>
+          </select>
+          <button type="submit" class="btn btn-success">Submit</button>
       </form>
     </div>
   </body>
