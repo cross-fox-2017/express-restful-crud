@@ -1,0 +1,33 @@
+<% include static/header %>
+<h1><%=title%></h1>
+<form action="/" method="post">
+<br>
+  <label>title</label>
+  <input type="text" name="title">
+  <label>user_email</label>
+  <select class="" name="UserId">
+    <% for(var i=0;i<users.length;i++){%>
+    <option value="<%=users[i].id%>"><%=users[i].email%></option>
+    <% } %>
+  </select>
+  <input type="submit" value="Submit">
+</form>
+<table style="width:100%" border="1">
+  <tr>
+    <th>title</th>
+    <th>is_complete</th>
+    <th>user_email</th>
+    <th>createdAt</th>
+    <th>Action</th>
+  </tr>
+  <% for(var i=0;i<tododata.length;i++){%>
+  <tr>
+    <td><%=tododata[i].title%></td>
+    <td><%=tododata[i].is_complete%></td>
+    <td><%=tododata[i].User.email %></td>
+    <td><%=tododata[i].createdAt %></td>
+    <td><a href="update/<%=tododata[i].id%>"> Update </a>||<a href="/delete/<%=tododata[i].id%>"> Delete </a></td>
+  </tr>
+  <% }%>
+</table>
+<% include static/footer %>
