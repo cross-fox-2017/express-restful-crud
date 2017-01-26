@@ -14,7 +14,6 @@
             <th>ID</th>
             <th>Title</th>
             <th>Complete</th>
-            <th>User ID</th>
             <th>Email</th>
             <th>Created At</th>
             <th>Action</th>
@@ -26,10 +25,9 @@
             <td><%= val.id %></td>
             <td><%= val.title %></td>
             <td><%= val.is_complete %></td>
-            <td><%= val.UserId %></td>
             <td><%= val.User.email %></td>
-            <td><%= val.createdAt%></td>
-            <td><a href="/edit/<%= val.id %>" class="btn btn-info">Update</a>&nbsp|&nbsp<a href="/delete/<%= val.id %>" class="btn btn-warning">Delete</a></td>
+            <td><%= val.createdAt.toUTCString() %></td>
+            <td><a href="/edit/<%= val.id %>" class="btn btn-info">Update</a>&nbsp|&nbsp<a href="/delete/<%= val.id %>" class="btn btn-warning" onclick="return confirm('Are you sure to delete?')" >Delete</a></td>
             <% }) %>
          </tr>
         </tbody>
