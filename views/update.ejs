@@ -1,0 +1,17 @@
+<% include static/header %>
+<div class="container">
+    <form action="/updated" method="post">
+        <br>
+        <label>Title</label>
+        <input type="text" name="title" class="form-control" value="<%=list.title%>">
+        <%if(list.is_complete == true){%>
+          <input type="radio" name="complete" value="true" checked> Complete<br>
+          <input type="radio" name="complete" value="false"> Uncomplete<br>
+        <%} else {%>
+          <input type="radio" name="complete" value="true"> Complete<br>
+          <input type="radio" name="complete" value="false" checked> Uncomplete<br>
+        <%}%>
+        <input type="submit" class="btn btn-primary" value="Submit">
+    </form>
+    <div>
+    <% include static/footer %>
